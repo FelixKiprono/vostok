@@ -1,0 +1,50 @@
+c:\users\felixkiprono\source\repos\Vostok\Vostok\bin\Debug\Vostok.exe.config
+c:\users\felixkiprono\source\repos\Vostok\Vostok\bin\Debug\Vostok.exe
+c:\users\felixkiprono\source\repos\Vostok\Vostok\bin\Debug\Vostok.pdb
+c:\users\felixkiprono\source\repos\Vostok\Vostok\bin\Debug\MySql.Data.dll
+c:\users\felixkiprono\source\repos\Vostok\Vostok\bin\Debug\MySql.Data.xml
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.csprojAssemblyReference.cache
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.Form1.resources
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.Properties.Resources.resources
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.csproj.GenerateResource.cache
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.csproj.CoreCompileInputs.cache
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.csproj.CopyComplete
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.exe
+c:\users\felixkiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.pdb
+C:\Users\FelixKiprono\source\repos\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
+C:\Users\FelixKiprono\source\repos\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+C:\Users\FelixKiprono\source\repos\Vostok\Vostok\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\FelixKiprono\source\repos\Vostok\Vostok\bin\Debug\Bunifu.Core.dll
+C:\Users\FelixKiprono\source\repos\Vostok\Vostok\obj\Debug\Vostok.Connect.resources
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.Connect.resources
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.Analysis.resources
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.Load.resources
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.Process.resources
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.Properties.Resources.resources
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.csproj.GenerateResource.cache
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.csproj.CoreCompileInputs.cache
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.exe
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.pdb
+E:\My Creations\Vostok\Vostok\bin\Debug\Vostok.exe.config
+E:\My Creations\Vostok\Vostok\bin\Debug\Vostok.exe
+E:\My Creations\Vostok\Vostok\bin\Debug\Vostok.pdb
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.Core.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForm.BunifuShadowPanel.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu.UI.WinForms.ToggleSwitch.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Bunifu_UI_v1.5.3.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\MySql.Data.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\Newtonsoft.Json.dll
+E:\My Creations\Vostok\Vostok\bin\Debug\MySql.Data.xml
+E:\My Creations\Vostok\Vostok\bin\Debug\Newtonsoft.Json.xml
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.csprojAssemblyReference.cache
+E:\My Creations\Vostok\Vostok\obj\Debug\Vostok.csproj.CopyComplete
