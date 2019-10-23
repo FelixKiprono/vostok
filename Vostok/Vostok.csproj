@@ -113,6 +113,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareLogics\MySQLCompare.cs" />
     <Compile Include="Connect.cs">
       <SubType>Form</SubType>
     </Compile>

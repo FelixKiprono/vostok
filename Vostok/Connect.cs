@@ -43,7 +43,7 @@ namespace Vostok
             InitializeComponent();
         }
 
-        
+
         Dictionary<String, String> columns(String tbl, String DB)
         {
             Dictionary<String, String> cols = new Dictionary<string, string>();
@@ -184,8 +184,21 @@ namespace Vostok
             }
             con.Close();
         }
-
-        private void bunifuButton1_Click_1(object sender, EventArgs e)
+        public async Task<JObject> StartComp()
+        {
+            JObject data = null;
+            await Task.Run(() =>
+             {
+                 this.TARGECONSTRSOURCE = "server=" + server2.Text + ";username=" + username2.Text + ";password=" + password2.Text + ";database=" + cbodb2.SelectedItem.ToString() + ";";
+                 data = new JObject();
+                 data.Add("SERVER_A", txtserver.DefaultText);
+                 data.Add("SERVER_B", server2.DefaultText);
+                 data.Add("TARGETCONNECTION", this.TARGECONSTRSOURCE);
+                 data.Add("SOURCECONNECTION", this.CONSTRSOURCE);
+             });
+            return data;
+        }
+        private async void bunifuButton1_Click_1(object sender, EventArgs e)
         {
 
 
@@ -196,18 +209,10 @@ namespace Vostok
 
                 return;
             }
-            this.TARGECONSTRSOURCE = "server=" + server2.Text + ";username=" + username2.Text + ";password=" + password2.Text + ";database=" + cbodb2.SelectedItem.ToString() + ";";
 
-            JObject data = new JObject();
-            data.Add("SERVER_A", txtserver.DefaultText);
-            data.Add("SERVER_B", server2.DefaultText);
-            data.Add("TARGETCONNECTION", this.TARGECONSTRSOURCE);
-            data.Add("SOURCECONNECTION", this.CONSTRSOURCE);
+            JObject data = await StartComp();
             //this.Hide();
             // new Process(data, DATABASE_A, DATABASE_B, SCHEMA_DETAILS_A, SCHEMA_DETAILS_B).ShowDialog();
-
-
-
             Analysis anl = new Analysis(data, DATABASE_A, DATABASE_B, SCHEMA_DETAILS_A, SCHEMA_DETAILS_B);
             anl.ShowDialog();
 

@@ -46,7 +46,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.progress);
             this.panel1.Controls.Add(this.label2);
@@ -74,7 +74,7 @@
             this.progress.animated = true;
             this.progress.animationIterval = 5;
             this.progress.animationSpeed = 300;
-            this.progress.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.progress.BackColor = System.Drawing.Color.LightSeaGreen;
             this.progress.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("progress.BackgroundImage")));
             this.progress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progress.ForeColor = System.Drawing.Color.White;
@@ -85,7 +85,7 @@
             this.progress.Margin = new System.Windows.Forms.Padding(2);
             this.progress.MaxValue = 100;
             this.progress.Name = "progress";
-            this.progress.ProgressBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.progress.ProgressBackColor = System.Drawing.Color.LightSeaGreen;
             this.progress.ProgressColor = System.Drawing.Color.White;
             this.progress.Size = new System.Drawing.Size(68, 68);
             this.progress.TabIndex = 5;
@@ -100,7 +100,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(164, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "All rights reserved (c) 2018";
+            this.label2.Text = "All rights reserved (c) 2019";
             // 
             // label1
             // 
@@ -125,7 +125,7 @@
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.ElipseRadius = 12;
             this.bunifuElipse1.TargetControl = this;
             // 
             // pictureBox2
