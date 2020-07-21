@@ -16,7 +16,7 @@ namespace Vostok
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Load());
+            Application.Run(new Connect());
         }
     }
 }

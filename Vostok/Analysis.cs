@@ -58,11 +58,11 @@ namespace Vostok
             tablesa.Text = "[" + SCHEMA_DETAILS_A.Keys.Count.ToString() + "] Total Tables";
             tablesb.Text = "[" + SCHEMA_DETAILS_B.Keys.Count.ToString() + "] Total Tables";
         }
-        int CountTableColumns(String CONN,String DB, String table)
+        int CountTableColumns(String CONN, String DB, String table)
         {
             int total = 0;
             SQL sql = new SQL(CONN);
-            total = sql.Execute("SELECT count(*) FROM information_schema.columns WHERE table_schema='"+DB+"' AND table_name = '" + table + "'");
+            total = sql.Execute("SELECT count(*) FROM information_schema.columns WHERE table_schema='" + DB + "' AND table_name = '" + table + "'");
             return total;
         }
         void loadSchemas()
@@ -90,17 +90,17 @@ namespace Vostok
             var targetonly = TABLES_B.Except(TABLES_A);
             foreach (String table in result)
             {
-                schema_a.Rows.Add(true, DATABASE_A, table, CountTableColumns(this.SOURCECONNECTIONSTRING,this.DATABASE_A, table));
-                schema_b.Rows.Add(true, DATABASE_B, table, CountTableColumns(this.TARGETCONNECTIONSTRING,this.DATABASE_B, table));
+                schema_a.Rows.Add(true, DATABASE_A, table, CountTableColumns(this.SOURCECONNECTIONSTRING, this.DATABASE_A, table));
+                schema_b.Rows.Add(true, DATABASE_B, table, CountTableColumns(this.TARGETCONNECTIONSTRING, this.DATABASE_B, table));
             }
 
             foreach (String table in sourceonly)
             {
-                sourcetables.Rows.Add(true, table, CountTableColumns(this.SOURCECONNECTIONSTRING,this.DATABASE_A, table));
+                sourcetables.Rows.Add(true, table, CountTableColumns(this.SOURCECONNECTIONSTRING, this.DATABASE_A, table));
             }
             foreach (String table in targetonly)
             {
-                targettables.Rows.Add(true, table, CountTableColumns(this.TARGETCONNECTIONSTRING,this.DATABASE_B,table));
+                targettables.Rows.Add(true, table, CountTableColumns(this.TARGETCONNECTIONSTRING, this.DATABASE_B, table));
             }
 
             List<String> tblanotb = new List<string>();

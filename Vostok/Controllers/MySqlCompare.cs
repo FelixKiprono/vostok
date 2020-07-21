@@ -4,26 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vostok.CompareLogics
+namespace Vostok.Controllers
 {
-
- 
-
-    public class MySQLCompare
+    class MySqlCompare
     {
-
-
-        public MySQLCompare()
-        {
-
-        }
-
-
-
-
-
-
-
-
     }
 }

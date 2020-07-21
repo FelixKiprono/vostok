@@ -14,44 +14,80 @@ namespace Vostok
 {
     public partial class Process : Form
     {
-        private String TARGETCONNECTIONSTRING;
-        private String SOURCECONNECTIONSTRING;
+        public DatabaseModel DatabaseOne;
+        public DatabaseModel DatabaseTwo;
 
-        private Dictionary<String, List<TableModel>> SCHEMA_DETAILS_A;
-        private Dictionary<String, List<TableModel>> SCHEMA_DETAILS_B;
-        private String DATABASE_A;
-        private String DATABASE_B;
-        private String SERVER_A;
-        private String SERVER_B;
-
-        public Process(JObject infor, String dba, String dbb, Dictionary<String, List<TableModel>> SCHEMA_DETAILS_A, Dictionary<String, List<TableModel>> SCHEMA_DETAILS_B)
+        public Process(DatabaseModel dba, DatabaseModel dbb)
         {
             InitializeComponent();
-            this.SCHEMA_DETAILS_A = SCHEMA_DETAILS_A;
-            this.SCHEMA_DETAILS_B = SCHEMA_DETAILS_B;
-            this.DATABASE_A = dba;
-            this.DATABASE_B = dbb;
 
-
-            this.SERVER_A = infor["SERVER_A"].ToString();
-            this.SERVER_B = infor["SERVER_B"].ToString();
-
-            this.TARGETCONNECTIONSTRING = infor["TARGETCONNECTION"].ToString();
-            this.SOURCECONNECTIONSTRING = infor["SOURCECONNECTION"].ToString();
+            this.DatabaseOne = dba;
+            this.DatabaseTwo = dbb;
 
 
         }
-        void StartCompare()
+        async Task CompareDatabase()
         {
 
 
+
         }
-
-
-
-
         private void Process_Load(object sender, EventArgs e)
         {
+            processtask.RunWorkerAsync();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private async void processtask_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            //compare source db vs target
+            List<DatabaseTableModel> TABLES_A = this.DatabaseOne.Tables;
+            List<DatabaseTableModel> TABLES_B = this.DatabaseTwo.Tables;
+
+            //
+            List<DatabaseTableModel> sourceTables = new List<DatabaseTableModel>();
+            List<DatabaseTableModel> targetTables = new List<DatabaseTableModel>();
+
+
+            TABLES_A.Sort();
+            TABLES_B.Sort();
+            //find the common tables
+            var result = TABLES_A.Intersect(TABLES_B);
+            var sourceonly = TABLES_A.Except(TABLES_B);
+            var targetonly = TABLES_B.Except(TABLES_A);
+
+
+            int i = 0;
+            this.Invoke((Action)delegate
+            {
+                progress.MaxValue = sourceonly.Count();
+                foreach (var table in sourceonly)
+                {
+                    i = i + 1;
+                    progress.Value = i;
+                    lbltask.Text = "Fetching Source tables only";
+                    sourceTables.Add(table);
+                }
+
+            });
+
+            int j = 0;
+            this.Invoke((Action)delegate
+            {
+                progress.MaxValue = targetonly.Count();
+                foreach (var table in targetonly)
+                {
+                    j = j + 1;
+                    progress.Value = j;
+                    lbltask.Text = "Fetching target tables only";
+                    targetTables.Add(table);
+                }
+            });
 
         }
     }

@@ -557,6 +557,7 @@
             this.cbodb2.Size = new System.Drawing.Size(323, 31);
             this.cbodb2.TabIndex = 18;
             this.cbodb2.Text = null;
+            this.cbodb2.SelectedIndexChanged += new System.EventHandler(this.cbodb2_SelectedIndexChanged);
             this.cbodb2.SelectionChangeCommitted += new System.EventHandler(this.cbodb2_SelectionChangeCommitted);
             this.cbodb2.Click += new System.EventHandler(this.cbodb2_Click);
             // 

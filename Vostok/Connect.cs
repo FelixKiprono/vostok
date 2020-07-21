@@ -16,6 +16,7 @@ namespace Vostok
     public partial class Connect : Form
     {
 
+        public DatabaseControllers dbcontroller;
 
         public Dictionary<String, List<TableModel>> SCHEMA_DETAILS_A;
         public Dictionary<String, List<TableModel>> SCHEMA_DETAILS_B;
@@ -82,14 +83,14 @@ namespace Vostok
         }
         void ConnectTarget(String server, String username, String Password)
         {
-            CONSTRSOURCE = "server=" + server + ";username=" + username + ";password=" + Password + ";";
+            TARGECONSTRSOURCE = "server=" + server + ";username=" + username + ";password=" + Password + ";";
 
             TABLES_B = new List<string>();
             //connect to database
             MySqlConnection con = new MySqlConnection(CONSTRSOURCE);
             con.Open();
             CON_B = con;
-            MySqlCommand cmd = new MySqlCommand("SHOW DATABASES", con);
+            MySqlCommand cmd = new MySqlCommand("SHOW DATABASES;", con);
             MySqlDataReader read = cmd.ExecuteReader();
             int j = 0;
             cbodb2.Items.Clear();
@@ -117,9 +118,10 @@ namespace Vostok
             DATABASE_A = database;
             CONSTRSOURCE = CONSTRSOURCE + "database=" + cbodatabase.SelectedItem.ToString() + ";";
             //open new connection
-            MySqlConnection con = new MySqlConnection(CONSTRSOURCE + "database=" + database + ";");
+
+            /*MySqlConnection con = new MySqlConnection(CONSTRSOURCE + "database=" + database + ";");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("SHOW TABLES", con);
+            MySqlCommand cmd = new MySqlCommand("SHOW TABLES;", con);
             MySqlDataReader read = cmd.ExecuteReader();
             int j = 0;
             SCHEMA_DETAILS_A = new Dictionary<string, List<TableModel>>();
@@ -127,11 +129,11 @@ namespace Vostok
             while (read.Read())
             {
                 String tbl = read.GetString(0);
-                SCHEMA_DETAILS_A.Add(tbl, FetchColumns(database, tbl));
+                //SCHEMA_DETAILS_A.Add(tbl, FetchColumns(database, tbl));
                 TABLES_A.Add(tbl);
                 j++;
             }
-            con.Close();
+            con.Close();*/
 
         }
         List<TableModel> FetchColumns(String db, String tbl)
@@ -167,22 +169,22 @@ namespace Vostok
         private void cbodb2_SelectionChangeCommitted(object sender, EventArgs e)
         {
             DATABASE_B = cbodb2.SelectedItem.ToString();
-            CONSTRSOURCE = CONSTRSOURCE + "database=" + cbodb2.SelectedItem.ToString() + ";";
+            TARGECONSTRSOURCE = TARGECONSTRSOURCE + "database=" + cbodb2.SelectedItem.ToString() + ";";
             //open new connection
-            MySqlConnection con = new MySqlConnection(CONSTRSOURCE + "database=" + cbodb2.SelectedItem.ToString() + ";");
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("SHOW TABLES", con);
-            MySqlDataReader read = cmd.ExecuteReader();
-            int j = 0;
-            SCHEMA_DETAILS_B = new Dictionary<string, List<TableModel>>();
-            while (read.Read())
-            {
-                String tbl = read.GetString(0);
-                SCHEMA_DETAILS_B.Add(tbl, FetchColumns(DATABASE_B, tbl));
-                TABLES_B.Add(tbl);
-                j++;
-            }
-            con.Close();
+            /* MySqlConnection con = new MySqlConnection(CONSTRSOURCE + "database=" + cbodb2.SelectedItem.ToString() + ";");
+             con.Open();
+             MySqlCommand cmd = new MySqlCommand("SHOW TABLES", con);
+             MySqlDataReader read = cmd.ExecuteReader();
+             int j = 0;
+             SCHEMA_DETAILS_B = new Dictionary<string, List<TableModel>>();
+             while (read.Read())
+             {
+                 String tbl = read.GetString(0);
+                 SCHEMA_DETAILS_B.Add(tbl, FetchColumns(DATABASE_B, tbl));
+                 TABLES_B.Add(tbl);
+                 j++;
+             }
+             con.Close();*/
         }
         public async Task<JObject> StartComp()
         {
@@ -210,11 +212,53 @@ namespace Vostok
                 return;
             }
 
-            JObject data = await StartComp();
+            if (this.CONSTRSOURCE == null || this.CONSTRSOURCE == String.Empty)
+            {
+                MessageBox.Show("Connection Settings Not Set for Source?");
+                return;
+            }
+            //fetch database items for database A
+            DatabaseControllers dbcontrollera = new DatabaseControllers(this.CONSTRSOURCE);
+            List<DatabaseTableModel> tablesdba = dbcontrollera.FetchTables(DATABASE_A);
+            DatabaseModel DBA = new DatabaseModel();
+            DBA.DatabaseName = DATABASE_A;
+            DBA.Tables = tablesdba;
+            var dt = DBA.Tables;
+
+            if (this.TARGECONSTRSOURCE == null || this.TARGECONSTRSOURCE == String.Empty)
+            {
+                MessageBox.Show("Connection Settings Not Set for Target?");
+                return;
+            }
+
+            //fetch database items for database A
+            DatabaseControllers dbcontrollerb = new DatabaseControllers(this.TARGECONSTRSOURCE);
+            List<DatabaseTableModel> tablesdbb = dbcontrollerb.FetchTables(DATABASE_B);
+            DatabaseModel DBB = new DatabaseModel();
+            DBB.DatabaseName = DATABASE_B;
+            DBB.Tables = tablesdbb;
+
+
+            //process window
+            Process p = new Process(DBA, DBB);
+            p.ShowDialog();
+
+
+
+
+
+
+
+            //JObject data = await StartComp();
             //this.Hide();
             // new Process(data, DATABASE_A, DATABASE_B, SCHEMA_DETAILS_A, SCHEMA_DETAILS_B).ShowDialog();
-            Analysis anl = new Analysis(data, DATABASE_A, DATABASE_B, SCHEMA_DETAILS_A, SCHEMA_DETAILS_B);
-            anl.ShowDialog();
+            //Analysis anl = new Analysis(data, DATABASE_A, DATABASE_B, SCHEMA_DETAILS_A, SCHEMA_DETAILS_B);
+            //anl.ShowDialog();
+
+        }
+
+        private void cbodb2_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

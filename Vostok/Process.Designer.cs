@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Process));
             this.progress = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbltask = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.processtask = new System.ComponentModel.BackgroundWorker();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.progress.LabelVisible = true;
             this.progress.LineProgressThickness = 5;
             this.progress.LineThickness = 5;
-            this.progress.Location = new System.Drawing.Point(189, 49);
+            this.progress.Location = new System.Drawing.Point(204, 60);
             this.progress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progress.MaxValue = 100;
             this.progress.Name = "progress";
@@ -69,17 +70,6 @@
             this.panel3.Size = new System.Drawing.Size(706, 71);
             this.panel3.TabIndex = 13;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 32);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Current Task : ";
-            // 
             // lbltask
             // 
             this.lbltask.AutoSize = true;
@@ -91,6 +81,21 @@
             this.lbltask.TabIndex = 4;
             this.lbltask.Text = "Initializing Database ...";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(165, 32);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Current Task : ";
+            // 
+            // processtask
+            // 
+            this.processtask.DoWork += new System.ComponentModel.DoWorkEventHandler(this.processtask_DoWork);
+            // 
             // Process
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +105,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.progress);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Process";
@@ -120,5 +126,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbltask;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker processtask;
     }
 }
